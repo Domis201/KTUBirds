@@ -9,7 +9,7 @@ public class Chicken : MonoBehaviour
     private bool _birdWasLaunched;
     private float _timeSittingAround;
 
-    [SerializeField] private float _LaunchPower = 500;
+    [SerializeField] private float _LaunchPower = 50;
 
 
     public void Awake()
@@ -23,14 +23,14 @@ public class Chicken : MonoBehaviour
         GetComponent<LineRenderer>().SetPosition(0, transform.position);
 
         if (_birdWasLaunched &&
-            GetComponent<Rigidbody2D>().velocity.magnitude <= 0.1)
+            GetComponent<Rigidbody2D>().velocity.magnitude <= 0.05)
         {
             _timeSittingAround += Time.deltaTime;
         }
 
 
-        if (transform.position.y > 10 || transform.position.y < -10 ||
-            transform.position.x > 10 || transform.position.x < -10 ||
+        if (transform.position.y > 20 || transform.position.y < -20 ||
+            transform.position.x > 20 || transform.position.x < -20 ||
             _timeSittingAround > 3)
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
@@ -43,9 +43,11 @@ public class Chicken : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = Color.red;
         GetComponent<LineRenderer>().enabled = true;
+
     }
     private void OnMouseUp()
     {
+
         GetComponent<SpriteRenderer>().color = Color.white;
 
         Vector2 directionToInitialPosition = _initialPosition - transform.position;
