@@ -17062,7 +17062,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.686429, y: 0.5852783, z: -1.9491007}
+  m_LocalPosition: {x: 4.686079, y: 0.58527815, z: -1.9491007}
   m_LocalScale: {x: 0.9875, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50610,7 +50610,7 @@ Transform:
   m_GameObject: {fileID: 1555816814}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.685794, y: -1.7958729, z: -1.9491007}
+  m_LocalPosition: {x: 4.685794, y: -0.48336828, z: -1.9491007}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -59363,7 +59363,7 @@ Transform:
   m_GameObject: {fileID: 1814193669}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000009536743, y: 0.03999996, z: 4}
+  m_LocalPosition: {x: -0.000002861023, y: 0.0400002, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61909,7 +61909,7 @@ Transform:
   m_GameObject: {fileID: 1906494581}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.228999, y: 0.8749907, z: 0.019366726}
+  m_LocalPosition: {x: -7.228999, y: 3.5, z: 0.019366726}
   m_LocalScale: {x: 0.060061313, y: 0.060061313, z: 0.060061313}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61930,7 +61930,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -61938,9 +61938,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!60 &1906494586
 PolygonCollider2D:
@@ -62195,7 +62195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca72baa51fec3b2498df38fa22dc38ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _LaunchPower: 500
+  _LaunchPower: 250
+  maxDragDistance: 4
 --- !u!120 &1906494588
 LineRenderer:
   serializedVersion: 2
@@ -62239,7 +62240,7 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -5.54, y: -2.22, z: 0.36}
+  - {x: -5.54, y: 0.4, z: 0.36}
   - {x: 20.52, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3

@@ -8,17 +8,20 @@ public class Chicken : MonoBehaviour
     private Vector3 _initialPosition;
     private bool _birdWasLaunched;
     private float _timeSittingAround;
-
-    [SerializeField] private float _LaunchPower = 50;
+    [SerializeField] private float _LaunchPower = 300;
+    [SerializeField] private float maxDragDistance = 4;
 
 
     public void Awake()
     {
         _initialPosition = transform.position;
+        GetComponent<Rigidbody2D>().gravityScale = 0;
     }
 
     private void Update()
     {
+
+
         GetComponent<LineRenderer>().SetPosition(1, _initialPosition);
         GetComponent<LineRenderer>().SetPosition(0, transform.position);
 
@@ -44,6 +47,7 @@ public class Chicken : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.red;
         GetComponent<LineRenderer>().enabled = true;
 
+
     }
     private void OnMouseUp()
     {
@@ -56,13 +60,22 @@ public class Chicken : MonoBehaviour
         GetComponent<Rigidbody2D>().gravityScale = 1;
         _birdWasLaunched = true;
         GetComponent<LineRenderer>().enabled = false;
+
     }
 
     private void OnMouseDrag()
     {
-        Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(newPosition.x, newPosition.y);
 
+        Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        newPosition.z = 0;
+        if (Vector2.Distance(newPosition, _initialPosition) > maxDragDistance)
+        {
+            newPosition = Vector3.MoveTowards(_initialPosition, newPosition,  maxDragDistance);
+        }
+            
+        transform.position = newPosition;
     }
+
+
 
 }
