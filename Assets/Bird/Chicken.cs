@@ -8,14 +8,19 @@ public class Chicken : MonoBehaviour
     private Vector3 _initialPosition;
     private bool _birdWasLaunched;
     private float _timeSittingAround;
+    private float _initialAngVel;
+    public Rigidbody2D rb;
     [SerializeField] private float _LaunchPower = 300;
     [SerializeField] private float maxDragDistance = 4;
+    [SerializeField] Lives live;
+   
 
-
-    public void Awake()
+   public void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         _initialPosition = transform.position;
-        GetComponent<Rigidbody2D>().gravityScale = 0;
+        rb.gravityScale = 0;
+        _initialAngVel = rb.angularVelocity;
     }
 
     private void Update()
@@ -26,7 +31,7 @@ public class Chicken : MonoBehaviour
         GetComponent<LineRenderer>().SetPosition(0, transform.position);
 
         if (_birdWasLaunched &&
-            GetComponent<Rigidbody2D>().velocity.magnitude <= 0.05)
+            rb.velocity.magnitude <= 0.05)
         {
             _timeSittingAround += Time.deltaTime;
         }
@@ -36,8 +41,20 @@ public class Chicken : MonoBehaviour
             transform.position.x > 20 || transform.position.x < -20 ||
             _timeSittingAround > 3)
         {
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            _birdWasLaunched = false;
+            transform.position = _initialPosition;
+            rb.gravityScale = 0;
+            _timeSittingAround = 0;
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = _initialAngVel;
+            transform.rotation = Quaternion.identity;
+
+            if (live.currentLives == 0)
+            {
+                string currentSceneName = SceneManager.GetActiveScene().name;
+                SceneManager.LoadScene(currentSceneName);
+            }
+            
         }
 
     }
@@ -46,7 +63,7 @@ public class Chicken : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = Color.red;
         GetComponent<LineRenderer>().enabled = true;
-
+        live.LoseLive(1);
 
     }
     private void OnMouseUp()
@@ -56,11 +73,10 @@ public class Chicken : MonoBehaviour
 
         Vector2 directionToInitialPosition = _initialPosition - transform.position;
 
-        GetComponent<Rigidbody2D>().AddForce(directionToInitialPosition * _LaunchPower);
-        GetComponent<Rigidbody2D>().gravityScale = 1;
+        rb.AddForce(directionToInitialPosition * _LaunchPower);
+        rb.gravityScale = 1;
         _birdWasLaunched = true;
         GetComponent<LineRenderer>().enabled = false;
-
     }
 
     private void OnMouseDrag()
@@ -74,8 +90,10 @@ public class Chicken : MonoBehaviour
         }
             
         transform.position = newPosition;
-    }
 
+        
+
+    }
 
 
 }
