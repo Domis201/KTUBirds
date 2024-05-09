@@ -1,8 +1,14 @@
 using UnityEngine;
 
+
 public class Enemy : MonoBehaviour
 {
+    AudioManager audioManager;
     [SerializeField] private GameObject _cloudParticlePrefab;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -11,6 +17,7 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(_cloudParticlePrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            audioManager.PlaySFX(audioManager.hitTheMonster);
             return;
         }
 
@@ -24,6 +31,7 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(_cloudParticlePrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            audioManager.PlaySFX(audioManager.hitTheMonster);
         }
     }
 }

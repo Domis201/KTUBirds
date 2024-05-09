@@ -6,16 +6,22 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
-
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     public void Pause()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
+        audioManager.PlaySFX(audioManager.buttonClick);
     }
     public void Resume()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
+        audioManager.PlaySFX(audioManager.buttonClick);
     }
     public void Quit()
     {

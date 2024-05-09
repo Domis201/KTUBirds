@@ -10,10 +10,19 @@ public class AudioManager : MonoBehaviour
 
     [Header("-------- Audio clip --------")]
     public AudioClip background;
+    public AudioClip hitTheBox;
+    public AudioClip hitTheMonster;
+    public AudioClip shootTheChicken;
+    public AudioClip buttonClick;
 
     private void Start()
     {
         musicSource.clip = background;
         musicSource.Play();
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        SFXSource.PlayOneShot(clip);
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Chicken : MonoBehaviour
 {
+    AudioManager audioManager;
+    public AudioSource audioPlayer;
     private Vector3 _initialPosition;
     private bool _birdWasLaunched;
     private float _timeSittingAround;
@@ -21,6 +23,7 @@ public class Chicken : MonoBehaviour
         _initialPosition = transform.position;
         rb.gravityScale = 0;
         _initialAngVel = rb.angularVelocity;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -75,6 +78,7 @@ public class Chicken : MonoBehaviour
         rb.AddForce(directionToInitialPosition * _LaunchPower);
         rb.gravityScale = 1;
         _birdWasLaunched = true;
+        audioManager.PlaySFX(audioManager.shootTheChicken);
         GetComponent<LineRenderer>().enabled = false;
     }
 
@@ -92,6 +96,14 @@ public class Chicken : MonoBehaviour
 
         
 
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "CollisionTag")
+        {
+            audioPlayer.Play();
+        }
     }
 
 
