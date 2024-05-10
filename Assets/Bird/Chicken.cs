@@ -58,6 +58,10 @@ public class Chicken : MonoBehaviour
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
         }
+        else if (live.currentLives < 0)
+        {
+            _birdWasLaunched = true;
+        }
 
     }
 
