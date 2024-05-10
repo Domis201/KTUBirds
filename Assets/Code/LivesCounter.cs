@@ -29,7 +29,7 @@ public class Lives : MonoBehaviour
         if (currentLives == 0) 
         {
             return;
-        }
+		}
         else
         {
             currentLives = currentLives - amount;
