@@ -17205,7 +17205,7 @@ Camera:
   far clip plane: 200
   field of view: 60
   orthographic: 1
-  orthographic size: 10.818588
+  orthographic size: 8.493399
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -17230,7 +17230,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.686699, y: 2.9104676, z: -1.9491007}
+  m_LocalPosition: {x: 4.686079, y: 0.58527815, z: -1.9491007}
   m_LocalScale: {x: 0.9875, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25316,7 +25316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 102.599976, y: -206}
+  m_AnchoredPosition: {x: 102.6001, y: -206}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &740331926
@@ -63105,7 +63105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca72baa51fec3b2498df38fa22dc38ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioPlayer: {fileID: 970776231}
   rb: {fileID: 0}
   _LaunchPower: 250
   maxDragDistance: 4

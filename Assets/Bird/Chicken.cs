@@ -6,7 +6,7 @@ using UnityEngine;
 public class Chicken : MonoBehaviour
 {
     AudioManager audioManager;
-    public AudioSource audioPlayer;
+    //public AudioSource audioPlayer;
     private Vector3 _initialPosition;
     private bool _birdWasLaunched;
     private float _timeSittingAround;
@@ -106,7 +106,8 @@ public class Chicken : MonoBehaviour
     {
         if (collision.gameObject.tag == "CollisionTag")
         {
-            audioPlayer.Play();
+            //audioPlayer.Play();
+            audioManager.PlaySFX(audioManager.hitTheBox);
         }
     }
 
