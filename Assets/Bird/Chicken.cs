@@ -51,9 +51,9 @@ public class Chicken : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.angularVelocity = _initialAngVel;
             transform.rotation = Quaternion.identity;
-            
+
         }
-        else if (live.currentLives <= 0 && rb.velocity == Vector2.zero && _timeSittingAround > 2)
+        else if (live.currentLives <= 0 && rb.velocity == Vector2.zero && _timeSittingAround > 2 || live.currentLives < 0)
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);

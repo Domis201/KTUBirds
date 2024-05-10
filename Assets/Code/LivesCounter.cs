@@ -26,7 +26,15 @@ public class Lives : MonoBehaviour
 
     public void LoseLive(int amount)
     {
-        currentLives = currentLives - amount;
+        if (currentLives == 0) 
+        {
+            return;
+        }
+        else
+        {
+            currentLives = currentLives - amount;
+        }
+        
     }
 
 }
