@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         musicSource.clip = background;
-        musicSource.Play();
+        if (this != null) musicSource.Play();
     }
 
     public void PlaySFX(AudioClip clip)
