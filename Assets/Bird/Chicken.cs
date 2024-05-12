@@ -6,7 +6,6 @@ using UnityEngine;
 public class Chicken : MonoBehaviour
 {
     AudioManager audioManager;
-    //public AudioSource audioPlayer;
     private Vector3 _initialPosition;
     private bool _birdWasLaunched;
     private float _timeSittingAround;
@@ -15,7 +14,9 @@ public class Chicken : MonoBehaviour
     [SerializeField] private float _LaunchPower = 300;
     [SerializeField] private float maxDragDistance = 4;
     [SerializeField] Lives live;
-   
+    private bool draggable;
+    private Vector3 currentPos;
+
 
    public void Awake()
     {
@@ -24,6 +25,7 @@ public class Chicken : MonoBehaviour
         rb.gravityScale = 0;
         _initialAngVel = rb.angularVelocity;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        draggable = true;
     }
 
     private void Update()
@@ -32,6 +34,8 @@ public class Chicken : MonoBehaviour
 
         GetComponent<LineRenderer>().SetPosition(1, _initialPosition);
         GetComponent<LineRenderer>().SetPosition(0, transform.position);
+
+        currentPos = transform.position;
 
         if (_birdWasLaunched &&
             rb.velocity.magnitude <= 0.05)
@@ -44,13 +48,15 @@ public class Chicken : MonoBehaviour
             transform.position.x > 20 || transform.position.x < -20 ||
             _timeSittingAround > 3)
         {
-            _birdWasLaunched = false;
+            
             transform.position = _initialPosition;
+            _birdWasLaunched = false;
             rb.gravityScale = 0;
             _timeSittingAround = 0;
             rb.velocity = Vector2.zero;
             rb.angularVelocity = _initialAngVel;
             transform.rotation = Quaternion.identity;
+            draggable = true;
 
         }
         else if (live.currentLives <= 0 && rb.velocity == Vector2.zero && _timeSittingAround > 2 || live.currentLives < 0)
@@ -62,15 +68,26 @@ public class Chicken : MonoBehaviour
         {
             _birdWasLaunched = true;
         }
+        if (_birdWasLaunched)
+        {
+            draggable = false;
+        }
+        
 
     }
 
     private void OnMouseDown()
     {
-        GetComponent<SpriteRenderer>().color = Color.red;
-        GetComponent<LineRenderer>().enabled = true;
-        live.LoseLive(1);
-
+        if (draggable)
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+            GetComponent<LineRenderer>().enabled = true;
+            live.LoseLive(1);
+        }
+        else
+        {
+            return;
+        }
     }
     private void OnMouseUp()
     {
@@ -88,18 +105,23 @@ public class Chicken : MonoBehaviour
 
     private void OnMouseDrag()
     {
-
-        Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        newPosition.z = 0;
-        if (Vector2.Distance(newPosition, _initialPosition) > maxDragDistance)
+        if (draggable == false)
         {
-            newPosition = Vector3.MoveTowards(_initialPosition, newPosition,  maxDragDistance);
-        }
+            return;
             
-        transform.position = newPosition;
+        }
+        else
+        {
+            Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            newPosition.z = 0;
+            if (Vector2.Distance(newPosition, _initialPosition) > maxDragDistance)
+            {
+                newPosition = Vector3.MoveTowards(_initialPosition, newPosition, maxDragDistance);
 
+            }
+            transform.position = newPosition;
+        }
         
-
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
