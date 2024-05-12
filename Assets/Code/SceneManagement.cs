@@ -7,10 +7,12 @@ public class SceneManagement : MonoBehaviour
 {
 	private static int _nextLevelIndex=1;
 	private Enemy[] _enemies;
+	private Boss[] _boss;
 	// Start is called before the first frame update
 	private void OnEnable()
 	{
 		_enemies = FindObjectsOfType<Enemy>();
+		_boss = FindObjectsOfType<Boss>();
 	}
 
 	// Update is called once per frame
@@ -19,6 +21,13 @@ public class SceneManagement : MonoBehaviour
 		foreach (Enemy enemy in _enemies)
 		{
 			if (enemy != null) { return; }
+		}
+		foreach (Boss boss in _boss) 
+		{ 
+			if (boss != null) 
+			{ 
+				return; 
+			}
 		}
 		string nextLevelName = "Level" + _nextLevelIndex;
 		_nextLevelIndex++;

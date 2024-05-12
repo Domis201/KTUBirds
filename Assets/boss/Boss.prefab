@@ -193,5 +193,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04241eab352d3ba459775d4888a005ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cloudParticlePrefab: {fileID: 0}
+  _cloudParticlePrefab: {fileID: 3727529229846756998, guid: 20c8b54cad458e4469208bd434e69240, type: 3}
   moveSpeed: 2
