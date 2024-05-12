@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5080513956531436275}
   m_Layer: 0
   m_Name: box_light
-  m_TagString: Untagged
+  m_TagString: CollisionTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

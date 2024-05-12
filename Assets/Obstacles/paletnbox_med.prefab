@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6424853404498149226}
   m_Layer: 0
   m_Name: paletnbox_med
-  m_TagString: Untagged
+  m_TagString: CollisionTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
