@@ -17,7 +17,7 @@ public class MonsterCounter : MonoBehaviour
     private void UpdateHUD()
     {
         GameObject[] monster = GameObject.FindGameObjectsWithTag("Monster");
-        count = monster.Length;
+        count = monster.Length-1;
         monsters.text = count.ToString();
     }
     void Update()
