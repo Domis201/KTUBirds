@@ -53,12 +53,12 @@ public class Chicken : MonoBehaviour
             transform.rotation = Quaternion.identity;
 
         }
-        else if (live.currentLives <= 0 && rb.velocity == Vector2.zero && _timeSittingAround > 2 || live.currentLives < 1)
+        else if (live.currentLives <= 0 && rb.velocity == Vector2.zero && _timeSittingAround > 2 || live.currentLives < 0)
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
         }
-        else if (live.currentLives < 0)
+        else if (live.currentLives <= 0)
         {
             _birdWasLaunched = true;
         }
