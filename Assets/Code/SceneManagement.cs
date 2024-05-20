@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
-	private static int _nextLevelIndex=1;
+	private static int _nextLevelIndex=2;
 	private Enemy[] _enemies;
 	private Boss[] _boss;
 	// Start is called before the first frame update

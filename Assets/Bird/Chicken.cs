@@ -40,8 +40,8 @@ public class Chicken : MonoBehaviour
         }
 
 
-        if (transform.position.y > 20 || transform.position.y < -20 ||
-            transform.position.x > 20 || transform.position.x < -20 ||
+        if (transform.position.y > 30 || transform.position.y < -30 ||
+            transform.position.x > 30 || transform.position.x < -30 ||
             _timeSittingAround > 3)
         {
             
@@ -72,11 +72,11 @@ public class Chicken : MonoBehaviour
 
         GetComponent<SpriteRenderer>().color = Color.red;
         GetComponent<LineRenderer>().enabled = true;
-        live.LoseLive(1);
+        
     }
     private void OnMouseUp()
     {
-
+        
         GetComponent<SpriteRenderer>().color = Color.white;
 
         Vector2 directionToInitialPosition = _initialPosition - transform.position;
@@ -86,6 +86,7 @@ public class Chicken : MonoBehaviour
         _birdWasLaunched = true;
         audioManager.PlaySFX(audioManager.shootTheChicken);
         GetComponent<LineRenderer>().enabled = false;
+        live.LoseLive(1);
     }
 
     private void OnMouseDrag()
