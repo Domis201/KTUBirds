@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 34af22b896e64574ca7da02d1b8522c6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - timeHolderTransform: {instanceID: 0}
+  - timeboardEntryObject: {fileID: 7115994112243461119, guid: 61b1309cb2f8cb94893d572e4a4b99e2, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -40,11 +40,10 @@ public class Chicken : MonoBehaviour
         }
 
 
-        if (transform.position.y > 20 || transform.position.y < -20 ||
-            transform.position.x > 20 || transform.position.x < -20 ||
+        if (transform.position.y > 28 || transform.position.y < -20 ||
+            transform.position.x > 28 || transform.position.x < -28 ||
             _timeSittingAround > 3)
         {
-            
             transform.position = _initialPosition;
             _birdWasLaunched = false;
             rb.gravityScale = 0;
@@ -52,7 +51,6 @@ public class Chicken : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.angularVelocity = _initialAngVel;
             transform.rotation = Quaternion.identity;
-
         }
         else if (live.currentLives <= 0 && rb.velocity == Vector2.zero && _timeSittingAround > 2 || live.currentLives < 0)
         {

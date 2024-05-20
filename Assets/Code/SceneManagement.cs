@@ -9,6 +9,16 @@ public class SceneManagement : MonoBehaviour
 	private Enemy[] _enemies;
 	private Boss[] _boss;
 	// Start is called before the first frame update
+
+	void Start()
+	{
+		if ( (SceneManager.GetActiveScene().buildIndex+1) == (_nextLevelIndex+1))
+		{
+            _nextLevelIndex++;
+        }
+
+    }
+
 	private void OnEnable()
 	{
 		_enemies = FindObjectsOfType<Enemy>();
@@ -30,7 +40,6 @@ public class SceneManagement : MonoBehaviour
 			}
 		}
 		string nextLevelName = "Level" + _nextLevelIndex;
-		_nextLevelIndex++;
 		SceneManager.LoadScene(nextLevelName);
 	}
 }
