@@ -32,6 +32,8 @@ Reikšminiai žodžiai: Platformer, Destroy, Physics-based, Casual puzzle.
 ## TESTAVIMAI
 
 Prieš atliekant kiekvieną testą žaidimas buvo paleidžiamas iš naujo. Testavome UI veikimą bei žaidimo mechanikas.
+![image](https://github.com/Domis201/KTUBirds/assets/120787865/25446fd0-6e43-4428-be6d-578282873138)
+
 
 ## TRUMPA NAUDOTOJO DOKUMENTACIJA
 
