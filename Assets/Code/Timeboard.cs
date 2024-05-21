@@ -44,7 +44,7 @@ namespace TimeBoards.Board
 
             for(int i = 0; i < savedTimes.times.Count; i++)
             {
-                if(testEntryTime  > savedTimes.times[i].entryTime)
+                if(testEntryTime  < savedTimes.times[i].entryTime)
                 {
                     savedTimes.times.Insert(i, timeboardEntryData);
                     timeAdded = true;
